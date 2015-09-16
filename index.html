@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" style="height=1080px; width:1920px">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>AMIV Infoscreen</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-color:white; height:1080px; width:1920px">
+    <div class="col-md-12" style="height:80px">
+      <p align="center" style="background-color:#1f2d54; vertical-align:middle; height:100%">
+
+        <font color="white" size="16">AMIV Events</font>
+
+      </p>
+    </div>
+    <div class="col-md-6" style="height:920px">
+      <ul>
+        <li>
+          <h3>Hertz 15:</h3>
+          <b>Wo:</b> Supermarket <br>
+          <b>Wann:</b> 23.10.15 <br>
+          <b>Anmeldung:</b> www.amiv.ethz.ch/events <br>
+          <b>Freie Plätze: xx </b>
+        </li>
+        <li>
+          <h3>ESF 15:</h3>
+          <b>Wo:</b> ETH Hönggerberg <br>
+          <b>Wann:</b> 24.9.15 20:00 bis 3:00 <br>
+          <b>Anmeldung:</b> Vor Ort <br>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6" style="height:920px; position:relative">
+      <img id="pic1" src="hertz.png" alt="hertz15" style="display: inline-block; max-height:100%; max-width:100%">
+      <img id="pic2" src="ESF15.png" alt="esf15" style="display: none; margin:auto;  max-height:100%; max-width:100%">
+    </div>
+    <script>
+
+      //var intervall = setInterval(change_hidden, 5000);
+      function change_hidden()
+      {
+        if(document.getElementById("pic1").style.display == "none")
+        {
+          document.getElementById("pic2").style.display = "none";
+          document.getElementById("pic1").style.display = "block";
+        }
+        else if(document.getElementById("pic1").style.display == "block")
+        {
+          document.getElementById("pic2").style.display = "block";
+          document.getElementById("pic1").style.display = "none";
+        }
+
+      }
+
+    </script>
+    <div class="col-md-12" style="height:80px">
+      <p align="center" style="background-color:#e8462b; vertical-align:middle; height:100%"">
+        <br>
+          <font color="white">For more information: www.amiv.ethz.ch</font>
+        <br>
+      </p>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
