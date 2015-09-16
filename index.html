@@ -43,12 +43,12 @@
       </ul>
     </div>
     <div class="col-md-6" style="height:920px; position:relative">
-      <img id="pic1" src="hertz.png" alt="hertz15" style="display: inline-block; max-height:100%; max-width:100%">
-      <img id="pic2" src="ESF15.png" alt="esf15" style="display: none; margin:auto;  max-height:100%; max-width:100%">
+      <img id="pic1" src="hertz.png" alt="hertz15" style="display: block; margin:auto; max-height:100%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
+      <img id="pic2" src="ESF15.png" alt="esf15" style="display: none; margin:auto;  max-height:100%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
     </div>
     <script>
 
-      //var intervall = setInterval(change_hidden, 5000);
+      var intervall = setInterval(change_hidden, 5000);
       function change_hidden()
       {
         if(document.getElementById("pic1").style.display == "none")
