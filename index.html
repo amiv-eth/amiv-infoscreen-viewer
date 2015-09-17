@@ -8,7 +8,7 @@
     <title>AMIV Infoscreen</title>
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,30 +17,42 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body style="background-color:white; height:1080px; width:1920px">
-    <div class="col-md-12" style="height:80px">
+  <body style="background-color:white; height:1080px; width:1920px; font-family: DINPro">
+    <div class="col-md-12" style="height:120px">
       <p align="center" style="background-color:#1f2d54; vertical-align:middle; height:100%">
 
-        <font color="white" size="16">AMIV Events</font>
-
+        <img src="logo.png" alt="AMIV logo" style="display: block; margin:auto; max-height:80%; max-width:80%; left: 0; right:0; top:0; bottom:0; position:absolute"></img>
       </p>
     </div>
     <div class="col-md-6" style="height:920px">
-      <ul>
-        <li>
-          <h3>Hertz 15:</h3>
-          <b>Wo:</b> Supermarket <br>
-          <b>Wann:</b> 23.10.15 <br>
-          <b>Anmeldung:</b> www.amiv.ethz.ch/events <br>
-          <b>Freie Plätze: xx </b>
-        </li>
-        <li>
-          <h3>ESF 15:</h3>
-          <b>Wo:</b> ETH Hönggerberg <br>
-          <b>Wann:</b> 24.9.15 20:00 bis 3:00 <br>
-          <b>Anmeldung:</b> Vor Ort <br>
-        </li>
-      </ul>
+      <br>
+
+      <div id="text1">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3>Hertz 15:</h3>
+          </div>
+          <div class="panel-body" style="color:#1f2d54; font-size:130%">
+            <b>Wo:</b> Supermarket <br>
+            <b>Wann:</b> 23.10.15 <br>
+            <b>Anmeldung:</b> www.amiv.ethz.ch/events <br>
+            <b>Freie Plätze: xx </b>
+          </div>
+        </div>
+      </div>
+      <div id="text2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>ESF 15:</h3>
+          </div>
+          <div class="panel-body" style="color:#1f2d54; font-size:130%">
+            <b>Wo:</b> ETH Hönggerberg <br>
+            <b>Wann:</b> 24.9.15 20:00 bis 3:00 <br>
+            <b>Anmeldung:</b> Vor Ort <br>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-6" style="height:920px; position:relative">
       <img id="pic1" src="hertz.png" alt="hertz15" style="display: block; margin:auto; max-height:100%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
@@ -53,22 +65,34 @@
       {
         if(document.getElementById("pic1").style.display == "none")
         {
+          //change images
           document.getElementById("pic2").style.display = "none";
           document.getElementById("pic1").style.display = "block";
+
+          //change highlight
+          document.getElementById('text2').innerHTML = document.getElementById('text2').innerHTML.replace("panel-primary","panel-default");
+          document.getElementById('text1').innerHTML = document.getElementById('text1').innerHTML.replace("panel-default","panel-primary");
+          //alert(document.getElementById('text1').innerHTML);
         }
         else if(document.getElementById("pic1").style.display == "block")
         {
+          //change images
           document.getElementById("pic2").style.display = "block";
           document.getElementById("pic1").style.display = "none";
+
+          //change highlight
+          document.getElementById('text1').innerHTML = document.getElementById('text1').innerHTML.replace("panel-primary","panel-default");
+          document.getElementById('text2').innerHTML = document.getElementById('text2').innerHTML.replace("panel-default","panel-primary");
         }
 
       }
 
+
     </script>
-    <div class="col-md-12" style="height:80px">
-      <p align="center" style="background-color:#e8462b; vertical-align:middle; height:100%"">
+    <div class="col-md-12" style="height:40px">
+      <p align="center" style="background-color:white; vertical-align:middle; height:100%">
         <br>
-          <font color="white">For more information: www.amiv.ethz.ch</font>
+          <font color="#1f2d54">For more information: <a href="www.amiv.ethz.ch">www.amiv.ethz.ch</a></font>
         <br>
       </p>
     </div>
