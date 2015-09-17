@@ -53,25 +53,40 @@
         </div>
       </div>
 
+      <div id="text3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>AMIV GV:</h3>
+          </div>
+          <div class="panel-body" style="color:#1f2d54; font-size:130%">
+            <b>Wo:</b> StuZ² <br>
+            <b>Wann:</b> 30.9.15 18:00 <br>
+            Essen und Bier anschliessend<br>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-6" style="height:920px; position:relative">
       <img id="pic1" src="hertz.png" alt="hertz15" style="display: block; margin:auto; max-height:100%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
       <img id="pic2" src="ESF15.png" alt="esf15" style="display: none; margin:auto;  max-height:100%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
+      <img id="pic3" src="gv.png" alt="esf15" style="display: none; margin:auto;  max-height:95%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
+
     </div>
     <script>
 
       var intervall = setInterval(change_hidden, 5000);
       function change_hidden()
       {
-        if(document.getElementById("pic1").style.display == "none")
+        if(document.getElementById("pic2").style.display == "block")
         {
           //change images
           document.getElementById("pic2").style.display = "none";
-          document.getElementById("pic1").style.display = "block";
+          document.getElementById("pic3").style.display = "block";
 
           //change highlight
           document.getElementById('text2').innerHTML = document.getElementById('text2').innerHTML.replace("panel-primary","panel-default");
-          document.getElementById('text1').innerHTML = document.getElementById('text1').innerHTML.replace("panel-default","panel-primary");
+          document.getElementById('text3').innerHTML = document.getElementById('text3').innerHTML.replace("panel-default","panel-primary");
           //alert(document.getElementById('text1').innerHTML);
         }
         else if(document.getElementById("pic1").style.display == "block")
@@ -83,6 +98,16 @@
           //change highlight
           document.getElementById('text1').innerHTML = document.getElementById('text1').innerHTML.replace("panel-primary","panel-default");
           document.getElementById('text2').innerHTML = document.getElementById('text2').innerHTML.replace("panel-default","panel-primary");
+        }
+        else if(document.getElementById("pic3").style.display == "block")
+        {
+          //change images
+          document.getElementById("pic3").style.display = "none";
+          document.getElementById("pic1").style.display = "block";
+
+          //change highlight
+          document.getElementById('text3').innerHTML = document.getElementById('text3').innerHTML.replace("panel-primary","panel-default");
+          document.getElementById('text1').innerHTML = document.getElementById('text1').innerHTML.replace("panel-default","panel-primary");
         }
 
       }
