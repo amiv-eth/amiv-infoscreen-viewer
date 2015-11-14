@@ -1,0 +1,57 @@
+.indextitel{
+	height:120px;
+	width:1920px;
+	background-color: #1f2d54;
+	position:fixed;
+	top:0;
+	left:0;
+
+}
+.eintrag{
+	color:#1f2d54; 
+	font-size:130%;
+	width:650px;
+
+}
+.panel{
+	margin-top:10px;
+	margin-bottom:0;
+	height:290px;
+}
+#bemerkungen{
+	position:fixed;
+	top:120px;
+}
+.bilderRahmen{
+	position:fixed;
+	top:120px;
+	left:650px;
+	height:900px;
+	width:1270px;
+	background-image: url('hertz.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+.untererRahmen{
+	height:60px;
+	width:1920px;
+	position:fixed;
+	top:1020px;
+	left:0;
+	background-color: #1f2d54;
+}
+#textUnten{
+	color: #e8462b;
+	font-size:20px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 20px;
+	
+	text-align: center;
+	width:600px;
+}
+.panel-body{
+	font-size:130%;
+}

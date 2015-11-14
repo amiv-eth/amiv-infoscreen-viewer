@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,108 +19,87 @@
     <![endif]-->
   </head>
   <body style="background-color:white; height:1080px; width:1920px; font-family: DINPro">
-    <div class="col-md-12" style="height:120px">
-      <p align="center" style="background-color:#1f2d54; vertical-align:middle; height:100%">
-
-        <img src="logo.png" alt="AMIV logo" style="display: block; margin:auto; max-height:80%; max-width:80%; left: 0; right:0; top:0; bottom:0; position:absolute"></img>
-      </p>
+    <div class="indextitel" >
+      
+        <img src="logo.png" alt="AMIV logo" style="display: block; margin:12px auto auto 100px; max-height:80%; max-width:80%; left: 100px; right:auto; top:12px;bottom:auto; position:absolut"></img>      
+    </div>     <!--<div class="col-md-6" style="height:920px">-->
+      
+    <div id="bemerkungen">
+      <div id="Event0">
+        <div class="eintrag">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2>Hertz 15:</h2>
+            </div>
+            <div class="panel-body" >
+              <b>Wo:</b> Supermarket <br>
+              <b>Wann:</b> 23.10.15 <br>
+              <b>Anmeldung:</b> www.amiv.ethz.ch/events <br>
+              <b>Freie Plätze: xx </b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="Event1">
+        <div class="eintrag">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2>ESF 15:</h2>
+            </div>
+            <div class="panel-body" >
+              <b>Wo:</b> ETH Hönggerberg <br>
+              <b>Wann:</b> 24.9.15 20:00 bis 3:00 <br>
+              <b>Anmeldung:</b> Vor Ort <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="Event2">
+        <div class="eintrag">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2>AMIV GV:</h2>
+            </div>
+            <div class="panel-body" >
+              <b>Wo:</b> StuZ² <br>
+              <b>Wann:</b> 30.9.15 18:00 <br>
+              Essen und Bier anschliessend<br>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6" style="height:920px">
-      <br>
 
-      <div id="text1">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3>Hertz 15:</h3>
-          </div>
-          <div class="panel-body" style="color:#1f2d54; font-size:130%">
-            <b>Wo:</b> Supermarket <br>
-            <b>Wann:</b> 23.10.15 <br>
-            <b>Anmeldung:</b> www.amiv.ethz.ch/events <br>
-            <b>Freie Plätze: xx </b>
-          </div>
-        </div>
-      </div>
-      <div id="text2">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3>ESF 15:</h3>
-          </div>
-          <div class="panel-body" style="color:#1f2d54; font-size:130%">
-            <b>Wo:</b> ETH Hönggerberg <br>
-            <b>Wann:</b> 24.9.15 20:00 bis 3:00 <br>
-            <b>Anmeldung:</b> Vor Ort <br>
-          </div>
-        </div>
-      </div>
-
-      <div id="text3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3>AMIV GV:</h3>
-          </div>
-          <div class="panel-body" style="color:#1f2d54; font-size:130%">
-            <b>Wo:</b> StuZ² <br>
-            <b>Wann:</b> 30.9.15 18:00 <br>
-            Essen und Bier anschliessend<br>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-6" style="height:920px; position:relative">
-      <img id="pic1" src="hertz.png" alt="hertz15" style="display: block; margin:auto; max-height:100%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
-      <img id="pic2" src="ESF15.png" alt="esf15" style="display: none; margin:auto;  max-height:100%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
-      <img id="pic3" src="gv.png" alt="esf15" style="display: none; margin:auto;  max-height:95%; max-width:100%; left: 0; right:0; top:0; bottom:0; position:absolute">
-
+    <div class="bilderRahmen">
     </div>
     <script>
-
-      var intervall = setInterval(change_hidden, 5000);
-      function change_hidden()
-      {
-        if(document.getElementById("pic2").style.display == "block")
-        {
-          //change images
-          document.getElementById("pic2").style.display = "none";
-          document.getElementById("pic3").style.display = "block";
-
-          //change highlight
-          document.getElementById('text2').innerHTML = document.getElementById('text2').innerHTML.replace("panel-primary","panel-default");
-          document.getElementById('text3').innerHTML = document.getElementById('text3').innerHTML.replace("panel-default","panel-primary");
-          //alert(document.getElementById('text1').innerHTML);
-        }
-        else if(document.getElementById("pic1").style.display == "block")
-        {
-          //change images
-          document.getElementById("pic2").style.display = "block";
-          document.getElementById("pic1").style.display = "none";
-
-          //change highlight
-          document.getElementById('text1').innerHTML = document.getElementById('text1').innerHTML.replace("panel-primary","panel-default");
-          document.getElementById('text2').innerHTML = document.getElementById('text2').innerHTML.replace("panel-default","panel-primary");
-        }
-        else if(document.getElementById("pic3").style.display == "block")
-        {
-          //change images
-          document.getElementById("pic3").style.display = "none";
-          document.getElementById("pic1").style.display = "block";
-
-          //change highlight
-          document.getElementById('text3').innerHTML = document.getElementById('text3').innerHTML.replace("panel-primary","panel-default");
-          document.getElementById('text1').innerHTML = document.getElementById('text1').innerHTML.replace("panel-default","panel-primary");
-        }
-
+      var poster=['hertz.png', 'ESF15.png', 'gv.png'];
+      var curPic = 0;
+      function setImg(){
+        if(curPic < ((poster.length)-1)){
+          curPic++;
+          prev=curPic-1;}
+        else{
+          curPic = 0;
+          prev=(poster.length)-1;};
+        var str1 = "Event";
+        var str2 = prev.toString();
+        var first = str1.concat(str2);
+        var str3 = curPic.toString();
+        var now = str1.concat(str3);
+        document.getElementById(first).innerHTML = document.getElementById(first).innerHTML.replace("panel-primary","panel-default");
+        document.getElementById(now).innerHTML = document.getElementById(now).innerHTML.replace("panel-default","panel-primary");
+        $('.bilderRahmen').css('background-image', 'url("'+poster[curPic]+'")');
       }
-
+      setInterval(setImg, 13333);
 
     </script>
-    <div class="col-md-12" style="height:40px">
-      <p align="center" style="background-color:white; vertical-align:middle; height:100%">
-        <br>
-          <font color="#1f2d54">For more information: <a href="www.amiv.ethz.ch">www.amiv.ethz.ch</a></font>
-        <br>
-      </p>
+    <div class="untererRahmen">
+      <div id="textUnten">
+        <p>
+          Für mehr Information: www.amiv.ethz.ch
+        </p>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
