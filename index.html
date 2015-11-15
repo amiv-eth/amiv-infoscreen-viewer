@@ -111,7 +111,7 @@
           };
         };        
         /*initialize variables, to make the output more userfriendly*/
-      var poster = [];
+      
       var month = new Array();
         month[0] = "January";
         month[1] = "February";
@@ -138,6 +138,8 @@
         monthD[9] = "Oktober";
         monthD[10] = "November";
         monthD[11] = "Dezember";
+        
+        var poster = [];
         var wo=[];
         var wann=[];
         var frei=[];
@@ -189,13 +191,13 @@
       /*get Date*/
         $('.panel-body').eq(i).append('<div class="wann">'+wann[i]+time[i]+'</div>');
       /*check if registration is needed*/
-      if(eventsListe[i]['spots']==-1){
+      if(eventsListe[i]['spots']==-1 || eventsListe[i]['spots']==0){
         $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungNo[i]+'</div>');
           }else{
               $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungYes[i]+'</div>');
       };
       /*free spots*/
-      if(eventsListe[i]['spots']!=-1){
+      if(eventsListe[i]['spots']!=-1 && eventsListe[i]['spots']!=0){
         $('.panel-body').eq(i).append('<div class="freiePlaetze">'+frei[i]+((eventsListe[i]['spots'])-(eventsListe[i]['signup_count']))+'</div>');
       };
     /*get Poster*/
@@ -247,12 +249,12 @@
                           };
                 };
             /*update loop variable*/
-            if(curPic < ((poster.length)-1)){
+            if(curPic < 2){
                 curPic++;
                 prev=curPic-1;}
               else{
                 curPic = 0;
-                prev=(poster.length)-1;};
+                prev=2;};
       };     
 
     </script>
