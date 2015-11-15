@@ -191,7 +191,7 @@
       /*get Date*/
         $('.panel-body').eq(i).append('<div class="wann">'+wann[i]+time[i]+'</div>');
       /*check if registration is needed*/
-      if(eventsListe[i]['spots']==-1 || eventsListe[i]['spots']==0){
+      if(eventsListe[i]['spots']==-1){
         $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungNo[i]+'</div>');
           }else{
               $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungYes[i]+'</div>');
