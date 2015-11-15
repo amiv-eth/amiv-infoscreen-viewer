@@ -1,3 +1,13 @@
+@font-face {
+      font-family: DinPro;
+      src: url('DINPro-Light.otf') format('opentype');
+    }
+
+@font-face {
+    font-family: DinPro;
+    src: url('DINPro-Bold.otf') format('opentype');
+    font-weight: bold;
+    }
 .indextitel{
 	height:120px;
 	width:1920px;
