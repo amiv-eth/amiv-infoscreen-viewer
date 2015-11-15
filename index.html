@@ -157,8 +157,8 @@
           var wo="Wo: ";
           var wann="Wann: ";
           var frei="Frei Plätze: ";
-          var anmeldungNo="Keine Anmeldung";
-          var anmeldungYes="Anmeldung: www.amiv.ethz.ch";
+          var anmeldungNo="Keine Anmeldung nötig";
+          var anmeldungYes="Anmelden auf www.amiv.ch/anmeldung";
           var titel=eventsListe[i]['title_de'];
           var n = monthD[monat];
           var time=tag+". "+n+" "+jahr;
@@ -169,11 +169,11 @@
           var wo="Where: ";
           var wann="When: ";
           var frei="Free spots: ";
-          var anmeldungNo="No registration";
-          var anmeldungYes="Registration: www.amiv.ethz.ch";
+          var anmeldungNo="No registration needed";
+          var anmeldungYes="Register on www.amiv.ch/anmeldung";
           var titel=eventsListe[i]['title_en'];
           var n = month[monat];
-          var time=n+" "+tag+" "+jahr;
+          var time=n+" "+tag+"th "+jahr;
         };
       /*get Location*/
       if(eventsListe[i]['location']!=null){
