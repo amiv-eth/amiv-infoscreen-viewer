@@ -23,12 +23,14 @@
     <![endif]-->
   </head>
   <body style="background-color:white; height:1080px; width:1920px; font-family: DINPro">
+    <!--Header:amiv logo-->
     <div class="indextitel" >
       
         <img src="logo.png" alt="AMIV logo" style="display: block; margin:12px auto auto 100px; max-height:80%; max-width:80%; left: 100px; right:auto; top:12px;bottom:auto; position:absolut"></img>      
     </div>     <!--<div class="col-md-6" style="height:920px">-->
-      
+  <!-- left Text-->  
     <div id="bemerkungen">
+     <!--firstEvent--> 
       <div id="Event0">
         <div class="eintrag">
           <div class="panel panel-primary">
@@ -39,6 +41,7 @@
           </div>
         </div>
       </div>
+      <!--secondEvent-->
       <div id="Event1">
         <div class="eintrag">
           <div class="panel panel-default">
@@ -49,6 +52,7 @@
           </div>
         </div>
       </div>
+      <!--thirdEvent-->
       <div id="Event2">
         <div class="eintrag">
           <div class="panel panel-default">
@@ -60,13 +64,16 @@
         </div>
       </div>
     </div>
-
+    <!--poster right-->
     <div class="bilderRahmen">
+      <!--if Image exists-->
       <div class="Hintergrund">
       </div>
+      <!--else:Default-->
       <div class="HintergrundText">
       </div>
     </div>
+    <!--lower bar-->
     <div class="untererRahmen">
       <div id="textUnten">
         <p>
@@ -76,17 +83,19 @@
     </div>
     
     <script type="text/JavaScript">
+      /*get Data of events from API*/
       var eventsListe=amivaccess.events.GET({where:["show_infoscreen==true"]});
       eventsListe = eventsListe['_items'];
-      console.log(eventsListe);
+      var apilink="https://amiv-apidev.vsos.ethz.ch";
+      /*current Date to compare later if Event is in the past*/
       var actualDate=new Date();
       var atag=actualDate.getDate();
       var amonat=actualDate.getMonth();
       var tempeventsListe=eventsListe;
-      console.log(tempeventsListe);
-      var apilink="https://amiv-apidev.vsos.ethz.ch";
       eventsListe=[];
+      /*Delete Events from List which are in the past*/
        for (var j = 0; j<tempeventsListe.length; j++){
+        /*Get Date, browser doesnt understand, that it already is a Date*/
         if(tempeventsListe[j]['time_start']!=null){
         var tag=tempeventsListe[j]['time_start'].slice(8,10);
         if(tempeventsListe[j]['time_start'][5]==0){
@@ -95,14 +104,13 @@
           var monat=parseInt(tempeventsListe[j]['time_start'].slice(5,7))-1;
         };
       };
+      /*compare to current Date, so that Event is shown entire day*/
         if((tag>atag || monat>=amonat) && tempeventsListe[j]['time_start']!=null)
           {
             eventsListe.push(tempeventsListe[j]);
           };
-        };
-        console.log(eventsListe);
-        
-
+        };        
+        /*initialize variables, to make the output more userfriendly*/
       var poster = [];
       var month = new Array();
         month[0] = "January";
@@ -130,89 +138,114 @@
         monthD[9] = "Oktober";
         monthD[10] = "November";
         monthD[11] = "Dezember";
+        /*take only first three inputs of updated List*/
       for (var i = 0; i<3; i++){
+        /*make Date of cupdated List userfriendly*/
         var tag=eventsListe[i]['time_start'].slice(8,10);
+        /*check if month is october-december*/
         if(eventsListe[i]['time_start'][5]==0){
         var monat=parseInt(eventsListe[i]['time_start'].slice(6,7))-1;}
-        else{
-          var monat=parseInt(eventsListe[i]['time_start'].slice(5,7))-1;
+            else{
+              var monat=parseInt(eventsListe[i]['time_start'].slice(5,7))-1;
         };
+        
         var jahr=eventsListe[i]['time_start'].slice(0,4);
-      if(eventsListe[i]['title_de']!=null){
-        $('.panel-heading').eq(i).append('<h2>'+eventsListe[i]['title_de']+'</h2>');
-        var wo="Wo: ";
-        var wann="Wann: ";
-        var frei="Frei Plätze: ";
-        var anmeldungNo="Keine Anmeldung";
-        var anmeldungYes="Anmeldung: www.amiv.ethz.ch";
-        var titel=eventsListe[i]['title_de'];
-        var n = monthD[monat];
-        var time=tag+". "+n+" "+jahr;
-      }else{
-        $('.panel-heading').eq(i).append('<h2>'+eventsListe[i]['title_en']+'</h2>');
-        var wo="Where: ";
-        var wann="When: ";
-        var frei="Empty spaces: ";
-        var anmeldungNo="No registration";
-        var anmeldungYes="Registration: www.amiv.ethz.ch";
-        var titel=eventsListe[i]['title_en'];
-        var n = month[monat];
-        var time=n+" "+tag+" "+jahr;
-      };
+    /*Add Data from List into panels*/  
+      /*if german exists*/
+        if(eventsListe[i]['title_de']!=null){
+          $('.panel-heading').eq(i).append('<h2>'+eventsListe[i]['title_de']+'</h2>');
+          var wo="Wo: ";
+          var wann="Wann: ";
+          var frei="Frei Plätze: ";
+          var anmeldungNo="Keine Anmeldung";
+          var anmeldungYes="Anmeldung: www.amiv.ethz.ch";
+          var titel=eventsListe[i]['title_de'];
+          var n = monthD[monat];
+          var time=tag+". "+n+" "+jahr;
+        }
+      /*english version*/
+        else{
+          $('.panel-heading').eq(i).append('<h2>'+eventsListe[i]['title_en']+'</h2>');
+          var wo="Where: ";
+          var wann="When: ";
+          var frei="Free spots: ";
+          var anmeldungNo="No registration";
+          var anmeldungYes="Registration: www.amiv.ethz.ch";
+          var titel=eventsListe[i]['title_en'];
+          var n = month[monat];
+          var time=n+" "+tag+" "+jahr;
+        };
+      /*get Location*/
       if(eventsListe[i]['location']!=null){
         $('.panel-body').eq(i).append('<div class="wo">'+wo+eventsListe[i]['location']+'</div>');
       };
+      /*get Date*/
         $('.panel-body').eq(i).append('<div class="wann">'+wann+time+'</div>');
+      /*check if registration is needed*/
       if(eventsListe[i]['spots']==-1){
         $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungNo+'</div>');
-      }else{
-        $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungYes+'</div>');
+          }else{
+              $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungYes+'</div>');
       };
+      /*free spots*/
       if(eventsListe[i]['spots']!=-1){
         $('.panel-body').eq(i).append('<div class="freiePlaetze">'+frei+((eventsListe[i]['spots'])-(eventsListe[i]['signup_count']))+'</div>');
       };
+    /*get Poster*/
+      /*if exists*/
       if(eventsListe[i]['img_infoscreen']!=null && eventsListe[i]['img_infoscreen']['content_url']!=null){
-      poster[i]=eventsListe[i]['img_infoscreen']['content_url'];}
-      else{
-        poster[i]=null;
+            poster[i]=eventsListe[i]['img_infoscreen']['content_url'];}
+      /*Default if no poster exists*/
+          else{
+              poster[i]=null;
+              };
       };
-    };
+    /*set Default poster, to show before browser enters loop*/
       if(poster[0]!=null){
-        $('.Hintergrund').css('background-image', 'url("'+apilink+poster[0]+'")');}
-        else{
-        $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
-        $('.Hintergrund').css('opacity', '0.2');
-        $('.HintergrundText').append('<h1>'+titel+'</h1><p>'+time+'</p>');
-        if(eventsListe[0]['location']!=null){
-        $('.HintergrundText').append('<p>'+eventsListe[0]['location']+'</p>');
-        };
+            $('.Hintergrund').css('background-image', 'url("'+apilink+poster[0]+'")');}
+            else{
+                $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
+                $('.Hintergrund').css('opacity', '0.2');
+                $('.HintergrundText').append('<h1>'+titel+'</h1><p>'+time+'</p>');
+                if(eventsListe[0]['location']!=null){
+                    $('.HintergrundText').append('<p>'+eventsListe[0]['location']+'</p>');
+                    };
       };
+    /*poster changing loop*/
+      /*loop veriables*/
       var curPic = 1;
       var prev=0;
-      var timerIndex = setInterval(function(){ setImg() }, 1000);
+      var timerIndex = setInterval(function(){ setImg() }, 13333);
+      /*loop*/
       function setImg(){        
-        var now = "Event"+curPic;
-        var first = "Event"+prev;
-        document.getElementById(first).innerHTML = document.getElementById(first).innerHTML.replace("panel-primary","panel-default");
-        document.getElementById(now).innerHTML = document.getElementById(now).innerHTML.replace("panel-default","panel-primary");
-      if(poster[curPic]!=null){
-        $('.Hintergrund').css('background-image', 'url("'+apilink+poster[curPic]+'")');
-        $('.Hintergrund').css('opacity', '1');
-        $('.HintergrundText').html("");
-      }else{
-        $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
-        $('.Hintergrund').css('opacity', '0.2');
-        $('.HintergrundText').append('<h1>'+titel+'</h1><p>'+time+'</p>');
-        if(eventsListe[curPic]['location']!=null){
-        $('.HintergrundText').append('<p>'+eventsListe[curPic]['location']+'</p>');
-        };
-      };
-      if(curPic < ((poster.length)-1)){
-          curPic++;
-          prev=curPic-1;}
-        else{
-          curPic = 0;
-          prev=(poster.length)-1;};
+          /*change panel color*/
+            var now = "Event"+curPic;
+            var first = "Event"+prev;
+            document.getElementById(first).innerHTML = document.getElementById(first).innerHTML.replace("panel-primary","panel-default");
+            document.getElementById(now).innerHTML = document.getElementById(now).innerHTML.replace("panel-default","panel-primary");
+          /*get Poster*/
+            /*if poster for event exists*/
+            if(poster[curPic]!=null){
+                  $('.Hintergrund').css('background-image', 'url("'+apilink+poster[curPic]+'")');
+                  $('.Hintergrund').css('opacity', '1');
+                  $('.HintergrundText').html("");
+                }
+                /*if no poster exists*/
+                else{
+                  $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
+                  $('.Hintergrund').css('opacity', '0.2');
+                  $('.HintergrundText').append('<h1>'+titel+'</h1><p>'+time+'</p>');
+                      if(eventsListe[curPic]['location']!=null){
+                          $('.HintergrundText').append('<p>'+eventsListe[curPic]['location']+'</p>');
+                          };
+                };
+            /*update loop variable*/
+            if(curPic < ((poster.length)-1)){
+                curPic++;
+                prev=curPic-1;}
+              else{
+                curPic = 0;
+                prev=(poster.length)-1;};
       };     
 
     </script>
