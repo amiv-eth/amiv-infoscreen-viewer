@@ -138,6 +138,13 @@
         monthD[9] = "Oktober";
         monthD[10] = "November";
         monthD[11] = "Dezember";
+        var wo=[];
+        var wann=[];
+        var frei=[];
+        var anmeldungNo=[];
+        var anmeldungYes=[];
+        var titel=[];
+        var time=[];
         /*take only first three inputs of updated List*/
       for (var i = 0; i<3; i++){
         /*make Date of cupdated List userfriendly*/
@@ -154,42 +161,42 @@
       /*if german exists*/
         if(eventsListe[i]['title_de']!=null){
           $('.panel-heading').eq(i).append('<h2>'+eventsListe[i]['title_de']+'</h2>');
-          var wo="Wo: ";
-          var wann="Wann: ";
-          var frei="Frei Plätze: ";
-          var anmeldungNo="Keine Anmeldung nötig";
-          var anmeldungYes="Anmelden auf www.amiv.ch/anmeldung";
-          var titel=eventsListe[i]['title_de'];
+          wo[i]="Wo: ";
+          wann[i]="Wann: ";
+          frei[i]="Frei Plätze: ";
+          anmeldungNo[i]="Keine Anmeldung nötig";
+          anmeldungYes[i]="Anmelden auf www.amiv.ch/anmeldung";
+          titel[i]=eventsListe[i]['title_de'];
           var n = monthD[monat];
-          var time=tag+". "+n+" "+jahr;
+          time[i]=tag+". "+n+" "+jahr;
         }
       /*english version*/
         else{
           $('.panel-heading').eq(i).append('<h2>'+eventsListe[i]['title_en']+'</h2>');
-          var wo="Where: ";
-          var wann="When: ";
-          var frei="Free spots: ";
-          var anmeldungNo="No registration needed";
-          var anmeldungYes="Register on www.amiv.ch/anmeldung";
-          var titel=eventsListe[i]['title_en'];
-          var n = month[monat];
-          var time=n+" "+tag+"th "+jahr;
+          wo[i]="Where: ";
+          wann[i]="When: ";
+          frei[i]="Free spots: ";
+          anmeldungNo[i]="No registration required";
+          anmeldungYes[i]="Register on www.amiv.ch/anmeldung";
+          titel[i]=eventsListe[i]['title_en'];
+          n = month[monat];
+          time[i]=n+" "+tag+"th "+jahr;
         };
       /*get Location*/
       if(eventsListe[i]['location']!=null){
-        $('.panel-body').eq(i).append('<div class="wo">'+wo+eventsListe[i]['location']+'</div>');
+        $('.panel-body').eq(i).append('<div class="wo">'+wo[i]+eventsListe[i]['location']+'</div>');
       };
       /*get Date*/
-        $('.panel-body').eq(i).append('<div class="wann">'+wann+time+'</div>');
+        $('.panel-body').eq(i).append('<div class="wann">'+wann[i]+time[i]+'</div>');
       /*check if registration is needed*/
       if(eventsListe[i]['spots']==-1){
-        $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungNo+'</div>');
+        $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungNo[i]+'</div>');
           }else{
-              $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungYes+'</div>');
+              $('.panel-body').eq(i).append('<div class="anmeldung">'+anmeldungYes[i]+'</div>');
       };
       /*free spots*/
       if(eventsListe[i]['spots']!=-1){
-        $('.panel-body').eq(i).append('<div class="freiePlaetze">'+frei+((eventsListe[i]['spots'])-(eventsListe[i]['signup_count']))+'</div>');
+        $('.panel-body').eq(i).append('<div class="freiePlaetze">'+frei[i]+((eventsListe[i]['spots'])-(eventsListe[i]['signup_count']))+'</div>');
       };
     /*get Poster*/
       /*if exists*/
@@ -206,7 +213,7 @@
             else{
                 $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
                 $('.Hintergrund').css('opacity', '0.2');
-                $('.HintergrundText').append('<h1>'+titel+'</h1><p>'+time+'</p>');
+                $('.HintergrundText').append('<h1>'+titel[0]+'</h1><p>'+time[0]+'</p>');
                 if(eventsListe[0]['location']!=null){
                     $('.HintergrundText').append('<p>'+eventsListe[0]['location']+'</p>');
                     };
@@ -234,7 +241,7 @@
                 else{
                   $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
                   $('.Hintergrund').css('opacity', '0.2');
-                  $('.HintergrundText').append('<h1>'+titel+'</h1><p>'+time+'</p>');
+                  $('.HintergrundText').append('<h1>'+titel[curPic]+'</h1><p>'+time[curPic]+'</p>');
                       if(eventsListe[curPic]['location']!=null){
                           $('.HintergrundText').append('<p>'+eventsListe[curPic]['location']+'</p>');
                           };
