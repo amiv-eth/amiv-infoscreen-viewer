@@ -103,13 +103,13 @@
 		 if(tempeventsListe[j]['show_infoscreen'] === true) {
 		     /*Get Date, browser doesnt understand, that it already is a Date*/
 		     if(tempeventsListe[j]['time_start']!=null){
-		     var tag=tempeventsListe[j]['time_start'].slice(8,10);
+			 var tag=tempeventsListe[j]['time_start'].slice(8,10);
 			 if(tempeventsListe[j]['time_start'][5]==0){
 			     var monat=parseInt(tempeventsListe[j]['time_start'].slice(6,7))-1;}
-		     else{
-			 var monat=parseInt(tempeventsListe[j]['time_start'].slice(5,7))-1;
+			 else{
+			     var monat=parseInt(tempeventsListe[j]['time_start'].slice(5,7))-1;
+			 };
 		     };
-		 };
 		     
 		     /*compare to current Date, so that Event is shown entire day*/
 		     if((tag>atag || monat>=amonat) && tempeventsListe[j]['time_start']!=null) {
@@ -222,6 +222,7 @@
              else{
 		 $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
 		 $('.Hintergrund').css('opacity', '0.2');
+		 $('.HintergrundText').html("")
 		 $('.HintergrundText').append('<h1>'+titel[0]+'</h1><p>'+time[0]+'</p>');
 		 if(eventsListe[0]['location']!=null){
                      $('.HintergrundText').append('<p>'+eventsListe[0]['location']+'</p>');
@@ -250,6 +251,7 @@
 		 else{
                      $('.Hintergrund').css('background-image', 'url("LOGO_FINAL_NO_TEXT.svg")');
                      $('.Hintergrund').css('opacity', '0.2');
+		     $('.HintergrundText').html("")
                      $('.HintergrundText').append('<h1>'+titel[curPic]+'</h1><p>'+time[curPic]+'</p>');
                      if(eventsListe[curPic]['location']!=null){
 			 $('.HintergrundText').append('<p>'+eventsListe[curPic]['location']+'</p>');
