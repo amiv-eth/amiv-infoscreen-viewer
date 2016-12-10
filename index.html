@@ -100,19 +100,14 @@
 	     eventsListe=[];
 	     /*Delete Events from List which are in the past*/
 	     for (var j = 0; j<tempeventsListe.length; j++){
-		 if(tempeventsListe[j]['show_infoscreen'] === true) {
+		 if(tempeventsListe[j]['show_infoscreen'] === true && tempeventsListe[j]['time_start']!=null) {
+		     // TODO: CHECK YEAR!!
 		     /*Get Date, browser doesnt understand, that it already is a Date*/
-		     if(tempeventsListe[j]['time_start']!=null){
-			 var tag=tempeventsListe[j]['time_start'].slice(8,10);
-			 if(tempeventsListe[j]['time_start'][5]==0){
-			     var monat=parseInt(tempeventsListe[j]['time_start'].slice(6,7))-1;}
-			 else{
-			     var monat=parseInt(tempeventsListe[j]['time_start'].slice(5,7))-1;
-			 };
-		     };
+		     var tag=tempeventsListe[j]['time_start'].slice(8,10);
+		     var monat=parseInt(tempeventsListe[j]['time_start'].slice(5,7))-1;
 		     
 		     /*compare to current Date, so that Event is shown entire day*/
-		     if((tag>atag || monat>=amonat) && tempeventsListe[j]['time_start']!=null) {
+		     if((tag>atag || monat>=amonat)) {
 			 eventsListe.push(tempeventsListe[j]);
 		     };
 		 };
