@@ -85,14 +85,13 @@
     
     <script type="text/JavaScript">
      /*get Data of events from API*/
-     amivcore.on('ready', function() {
-	 console.log(amivcore);
-	 console.log(amivcore.events);
+     amivcore.on('ready', function() {		// wait for it to be ready
 	 amivcore.events.GET({}, function(ret) {
-	     eventsListe=ret
-	     eventsListe = eventsListe['_items'];
-	     var apilink="https://amiv-apidev.vsos.ethz.ch";
-	     /*current Date to compare later if Event is in the past*/
+	 	 console.log(ret); //test
+	     eventsListe = ret['_items'];  //Eventsliste an der Stelle _items
+	     console.log(eventsListe)
+		 /*var apilink="http://192.186.1.100";	 */    
+		 /*current Date to compare later if Event is in the past*/
 	     var actualDate=new Date();
 	     var atag=actualDate.getDate();
 	     var amonat=actualDate.getMonth();
