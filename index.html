@@ -92,8 +92,6 @@
 
 
 /* Work in progress:
--take DATA from API ~ correctly handled ?
--only take part of the returned list
 -Display PRICE && others???
 -Display the year??
 */
@@ -101,8 +99,8 @@
      /*get Data of events from API*/
   	 amivcore.on('ready', function() {		 	//NECESSARY!
 	 //amivcore.events.GET({}, function(ret) {
- 		 var api_url="192.168.1.100"				//MUSS GEAENDERT WERDEN? WENN DIE ADRESSE GEAENDERT WIRD!!
- 		 											//SHOULD BE CHANGED WHEN THE ADDRESS OF THE API IS CHANGED!!
+ 		 var api_url="http://192.168.1.100"					//MUSS GEAENDERT WERDEN? WENN DIE ADRESSE GEAENDERT WIRD!!
+ 		 													//SHOULD BE CHANGED WHEN THE ADDRESS OF THE API IS CHANGED!!
 		 
    
 	 amivcore.events.GET({ 		//get the Events to show [FROM API DIRECTLY]
@@ -134,8 +132,7 @@
 	     /* take only first three inputs of the List */
 		 for (var i = 0; i<3; i++){
 		 	 if (eventsListe[i]!==undefined) 							///!\\ ändern!! nur zum testen (original= !==)
-		 	 	{
-		 	 		console.log(eventsListe[i])
+		 	 {
 			 	 var datum = new Date(eventsListe[i]['time_end']);
 				 var tag = datum.getDate();		//Datum des i-ten Events
 				 var monat = datum.getMonth();
@@ -180,7 +177,7 @@
 				 };
 
 				 /*get Poster*/
-				 /*if exists*/																					///////!\\  Bildupload!
+				 /*if exists*/																					
 				 if(eventsListe[i]['img_infoscreen']!=undefined && eventsListe[i]['img_infoscreen']['file']!=null){ 		
 				     poster[i]=eventsListe[i]['img_infoscreen']['file'];}
 				 /*Default if no poster exists*/
@@ -253,13 +250,8 @@
 		}
 	);
 
+	});
 
-
-    
-
-
-	 });
-     //});
     </script>
   </body>
 </html>
