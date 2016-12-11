@@ -128,10 +128,12 @@
 	     var titel=[];
 	     var time=[];
 	     var message=[];
+	     var message2=[];
+
 	             
 	     /* take only first three inputs of the List */
 		 for (var i = 0; i<3; i++){
-		 	 if (eventsListe[i]!==undefined) 							///!\\ ändern!! nur zum testen (original= !==)
+		 	 if (eventsListe[i]!==undefined) 							//!\\  (original: !== )
 		 	 {
 			 	 var datum = new Date(eventsListe[i]['time_end']);
 				 var tag = datum.getDate();		//Datum des i-ten Events
@@ -189,7 +191,11 @@
 			 	$('.panel-heading').eq(i).append('<h2>'+"AMIV is the best"+'</h2>');
 			 	titel[i]="Did you Know?";
 			 	message[i]="AMIV-Mitglieder bekommen einen freien Bier pro Tag! Prost!"
+			 	message2[i]="Hole dir deine AMIV-Tasse oder dein AMIV-Hoodie aus dem AMIV-Büro!"
 			 	$('.panel-body').eq(i).append('<div class="anmeldung">'+message[i]+'</div>');
+			 	$('.panel-body').eq(i).append('<div class="wo">'+message2[i]+'</div>');
+			 	time[i]=message2[i]			//komisch, aber ermOglicht eine Nachricht im Main teil zu schreiben (zeigt nicht mehr "undefined")
+			 	poster[i]=null;
 			 };
 		 };
 
@@ -212,7 +218,7 @@
 	     /* poster changing loop: set what you see */
 	     var currentPic = 1;
 	     var prev=0;
-	     var timerIndex = setInterval(function(){ setImg() }, 10000);
+	     var timerIndex = setInterval(function(){ setImg() }, 10000);							//SET TIME
 	     /*loop*/
 	     function setImg(){
 			 /*change panel color*/
